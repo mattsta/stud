@@ -1,3 +1,20 @@
+Dead Repo Notice
+================
+This repository is old, non-updateable, and obsolete.  Please use the upstream stud at https://github.com/bumptech/stud.
+Upstream stud doesn't have XFF, but it does have the haproxy PROXY protocol or it can simply prepend the source IP as a few
+binary octets to the outgoing stream.
+
+PROXY or prepended IP octets aren't quite XFF, but you can parse PROXY or rip off the first few octets to grab the external IP.  Another alternative
+is someone (you?  me (paid)?) could write a PROXY protocol to XFF injector.  You would end up with client -> stud ->
+PROXY to XFF translator -> endpoint.
+
+This repository is closed to updates since you should be using https://github.com/bumptech/stud instead.
+
+(also, stud has no concept of the protocol it's forwarding, so the XFF support is a total hack, rampant layering
+violation, etc.)
+
+
+
 stud - The Scalable TLS Unwrapping Daemon
 =========================================
 
