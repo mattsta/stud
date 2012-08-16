@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <getopt.h>
+#include <limits.h>
 
 #include <sched.h>
 

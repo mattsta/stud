@@ -8,11 +8,11 @@ STUD_HTTP_C=$(STUD_C) proto_http.c http-parser/http_parser.o
 
 BASIC_DEPS=$(STUD_C) Makefile
 HTTP_DEPS=http-parser/http_parser.o proto_http.c proto_http.h
-JEM_DEPS=jemalloc/jemalloc/lib/libjemalloc.a
+JEM_DEPS=jemalloc/lib/libjemalloc.a
 LIBEV_DEPS=libev/lib/libev.a
 
 LIBEV_STATIC=libev/lib/libev.a -lm
-JEM_STATIC=jemalloc/jemalloc/lib/libjemalloc.a -ldl -lpthread
+JEM_STATIC=jemalloc/lib/libjemalloc.a -ldl -lpthread
 
 LDFLAGS=-L/usr/local/lib -L/sw/lib
 
@@ -57,17 +57,17 @@ http-parser/http_parser.o: http-parser/README.md
 	make -C http-parser http_parser.o
 
 http-parser/README.md:
-	git clone http://github.com/ry/http-parser
-	cd http-parser && git checkout -b jul6_stable 1786fdae36d3d40d59463dacab1cfb4165cf9f1d
+	git clone http://github.com/joyent/http-parser
+	cd http-parser # && git checkout -b jul6_stable 1786fdae36d3d40d59463dacab1cfb4165cf9f1d
 
-jemalloc/jemalloc/lib/libjemalloc.a: jemalloc/jemalloc/autogen.sh
+jemalloc/lib/libjemalloc.a: jemalloc/autogen.sh
 
-jemalloc/jemalloc/autogen.sh:
+jemalloc/autogen.sh:
 	git clone git://canonware.com/jemalloc.git
-	cd jemalloc/jemalloc; ./autogen.sh; make -j4
+	cd jemalloc; ./autogen.sh; make -j4
 
 libev/lib/libev.a:
-	curl -O http://dist.schmorp.de/libev/libev-4.04.tar.gz
+	curl -O http://dist.schmorp.de/libev/Attic/libev-4.04.tar.gz
 	tar xfvzp libev*.gz
 	cd libev-*; ./configure --prefix=`pwd`/../libev/; make install
 
