@@ -587,8 +587,8 @@ static void handle_accept(struct ev_loop *loop, ev_io *w, int revents) {
     ps->ph.body_sz = 0;
     ps->ph.stripped_last_header = 0;
     ps->ph.settings.on_message_begin = NULL;
-    ps->ph.settings.on_path = NULL;
-    ps->ph.settings.on_query_string = NULL;
+/*  ps->ph.settings.on_path = NULL;
+    ps->ph.settings.on_query_string = NULL;  */
     ps->ph.settings.on_message_complete = on_message_complete;
     ps->ph.settings.on_url = cb_url;
     ps->ph.settings.on_header_field = on_header_field;
